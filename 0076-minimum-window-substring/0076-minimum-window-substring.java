@@ -58,9 +58,10 @@ class Solution {
 
         while(start<=end){
             int mid = start + (end-start)/2;
+            String temp = check(mid,s,t,required);
 
-            if(check(mid,s,t,required)!=""){
-                ans = new StringBuffer(check(mid,s,t,required));
+            if(temp != ""){
+                ans = new StringBuffer(temp);
                 end = mid-1;
             }else{
                 start = mid+1;
