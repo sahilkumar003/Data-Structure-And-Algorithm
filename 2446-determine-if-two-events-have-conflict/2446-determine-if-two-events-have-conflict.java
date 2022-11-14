@@ -7,7 +7,9 @@ class Solution {
         int c = Integer.parseInt(s2[0].replaceAll("[^0-9]", ""));
         int d = Integer.parseInt(s2[1].replaceAll("[^0-9]", ""));
         
-       if(b<=d && c<=b || d<=b && a<=d){
+       if(b<=d && c<=b){
+           return true;
+       }else if(d<=b && a<=d){
            return true;
        }
         
