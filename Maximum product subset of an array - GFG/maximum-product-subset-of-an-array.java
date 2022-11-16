@@ -59,47 +59,37 @@ class Solution {
     public static int findMaxProduct(int n, int[] arr) {
         
         if(n == 1){
-            return arr[0];
-        }
-        
-        int positive = 0;
-        int negative = 0;
-        
-        for(int i=0;i<n;++i){
-            if(arr[i]>0){
-                positive++;
-            }else if(arr[i]<0){
-                negative++;
-            }
-        }
-        
-        if(negative>0 && negative%2!=0){
-            negative--;
-        }
-        
-        long sum = 0;
-        
-        if(positive>0 || negative>0){
-            sum = 1;
-        }
-        
-        Arrays.sort(arr);
-        
-        if(negative>0){
-        for(int i=0;i<negative;++i){
-            sum *= arr[i];
-            sum %= 1000000007;
-        }
-        }
-        
-        if(positive>0){
-        for(int i=n-1;i>=n-positive;--i){
-            sum *= arr[i];
-            sum %= 1000000007;
-        }
-        }
-        
-        return (int)Math.abs(sum);
+           return arr[0];
+       }
+
+       long product = 1;
+       int negative = 0;
+       int zero = 0;
+       int minNegative = Integer.MIN_VALUE;
+
+       for(int i=0;i<n;++i){
+           if(arr[i]!=0){
+               product *= arr[i];
+               product %= 1000000007;
+           }
+           if(arr[i]<0){
+               negative++;
+               minNegative = Math.max(minNegative,arr[i]);
+           }
+           if(arr[i]==0) {
+               zero++;
+           }
+       }
+
+       if(((negative==1) && (zero>0) && (negative+zero)==n) || (zero == n)){
+           return 0;
+       }
+
+       if(negative%2!=0){
+           return (int)(product/minNegative);
+       }
+
+       return (int)product;
     }
 }
         
