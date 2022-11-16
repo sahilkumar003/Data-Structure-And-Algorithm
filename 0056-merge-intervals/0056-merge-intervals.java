@@ -18,7 +18,6 @@ class Solution {
         for(int i=1;i<intervals.length;++i){
             if(intervals[i][0]<=max){
                 max = Math.max(max,intervals[i][1]);
-                start = Math.min(start,intervals[i][0]);
             }else{
                 map.put(start,max);
                 start = intervals[i][0];
