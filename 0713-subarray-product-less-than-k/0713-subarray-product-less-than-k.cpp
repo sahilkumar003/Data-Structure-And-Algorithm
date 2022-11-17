@@ -1,7 +1,7 @@
 class Solution {
 public:
     int numSubarrayProductLessThanK(vector<int>& nums, int k) {
-         int i = 0;
+        int i = 0;
         int j = 0;
         int ans=0;
         int curr_product=1;
