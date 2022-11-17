@@ -28,13 +28,7 @@ class Solution {
             }
         }
 
-        String s = "";
-
-        for(int i=0;i<c.length;++i){
-            s += c[i];
-        }
-
-        int ans = Integer.parseInt(s);
+        int ans = Integer.parseInt(new String(c));
         
         return Math.max(ans,n);
     }
