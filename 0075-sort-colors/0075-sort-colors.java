@@ -4,7 +4,6 @@ class Solution {
 		int end = arr.length-1;
 		int index = 0;
 		while(index<=end) {
-			//0 
 			if(arr[index]==0) {
 				int temp = arr[index];
 				arr[index]=arr[start];
