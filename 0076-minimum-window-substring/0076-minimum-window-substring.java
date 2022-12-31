@@ -2,13 +2,9 @@ class Solution {
     public boolean checkAns(HashMap<Character,Integer> required,HashMap<Character,Integer> map){
 
         for(Character ch : required.keySet()){
-            if(map.containsKey(ch)){
-                if(map.get(ch)<required.get(ch)){
-                    return false;
-                }
-            }else{
+            if(!map.containsKey(ch) || map.get(ch)<required.get(ch)){
                 return false;
-            }
+           }
         }
         return true;
     }
@@ -51,6 +47,7 @@ class Solution {
         StringBuffer ans = new StringBuffer("");
 
         HashMap<Character,Integer> required = new HashMap<>();
+        
         for(int i=0;i<t.length();++i){
             char c = t.charAt(i);
             required.put(c,required.getOrDefault(c,0)+1);
