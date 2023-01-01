@@ -1,11 +1,13 @@
 class Solution {
     public boolean wordPattern(String pattern, String s) {
-        String []str = s.split(" ");
-        HashMap<Character,String> map = new HashMap<>();
+       String []str = s.split(" ");
         
         if(pattern.length()!=str.length){
             return false;
         }
+        
+       HashMap<Character,String> map = new HashMap<>();
+        
 
         for(int i=0;i<pattern.length();++i){
             char c = pattern.charAt(i);
@@ -17,18 +19,17 @@ class Solution {
                 map.put(c, str[i]);
             }
         }
-        
-        for(int i=1;i<pattern.length();++i){
-            if(pattern.charAt(i)!=pattern.charAt(i-1)){
-                if((str[i]).equals(str[i-1])){
+
+        HashMap<String,Character> map1 = new HashMap<>();
+
+        for(int i=0;i<pattern.length();++i){
+            char c = pattern.charAt(i);
+            if(map1.containsKey(str[i])){
+                if(map1.get(str[i])!=c){
                     return false;
                 }
-            }
-        }
-        
-        if(pattern.charAt(0)!=pattern.charAt(pattern.length()-1)){
-            if((str[0]).equals(str[str.length-1])){
-                return false;
+            }else {
+                map1.put(str[i],c);
             }
         }
 
