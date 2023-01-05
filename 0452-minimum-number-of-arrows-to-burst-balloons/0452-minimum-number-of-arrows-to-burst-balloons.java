@@ -8,9 +8,7 @@ class Solution {
         int max = arr[0][1];
 
         for(int i=1;i<arr.length;++i){
-            if(max>=arr[i][0] && max<=arr[i][1]){
-                continue;
-            }else{
+            if(max<arr[i][0] || max>arr[i][1]){
                 max = arr[i][1];
                 count++;
             }
