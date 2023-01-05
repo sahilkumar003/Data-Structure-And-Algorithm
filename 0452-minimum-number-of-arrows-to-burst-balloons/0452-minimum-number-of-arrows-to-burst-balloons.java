@@ -1,7 +1,7 @@
 class Solution {
     public int findMinArrowShots(int[][] arr) {
          Arrays.sort(arr, (a,b) -> {
-            return a[1] != b[1] ? a[1]-b[1] : a[0]-b[0];
+            return a[1]-b[1];
         });
 
         int count = 1;
