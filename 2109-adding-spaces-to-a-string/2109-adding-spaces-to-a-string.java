@@ -1,6 +1,5 @@
 class Solution {
     public String addSpaces(String s, int[] arr) {
-        Arrays.sort(arr);
         
         StringBuffer str = new StringBuffer(s);
         
