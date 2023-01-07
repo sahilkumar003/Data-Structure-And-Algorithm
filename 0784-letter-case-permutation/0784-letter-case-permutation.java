@@ -10,13 +10,8 @@ class Solution {
         if(Character.isDigit(c)){
             permutationSpace(p+c,up.substring(1),list);
         }else{
-           if(Character.isUpperCase(c)){
-                permutationSpace(p+c,up.substring(1),list);
-                permutationSpace(p+Character.toLowerCase(c),up.substring(1),list); 
-           }else{
-                permutationSpace(p+c,up.substring(1),list);
+                permutationSpace(p+Character.toLowerCase(c),up.substring(1),list);
                 permutationSpace(p+Character.toUpperCase(c),up.substring(1),list); 
-           }
         }
             
           return list;
