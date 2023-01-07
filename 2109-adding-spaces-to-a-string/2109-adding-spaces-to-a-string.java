@@ -3,11 +3,8 @@ class Solution {
         
         StringBuffer str = new StringBuffer(s);
         
-        int count = 0;
-        
         for(int i=0;i<arr.length;++i){
-            str.insert(arr[i]+count," ");
-            count++;
+            str.insert(arr[i]+i," ");
         }
         
         return str.toString();
