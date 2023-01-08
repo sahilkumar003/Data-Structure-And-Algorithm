@@ -3,6 +3,7 @@ class Solution {
         
 
         int ans = 0;
+        double temp = 0;
 
         for(int i=0;i<arr.length;++i){
             HashMap<Double,Integer> map = new HashMap<>();
@@ -10,18 +11,16 @@ class Solution {
                 if(i!=j){
                     int x = arr[i][0]-arr[j][0];
                     int y = arr[i][1]-arr[j][1];
-
-                    if(x!=0){
-                        double temp = (double) y/(double)x;
-                        map.put(temp,map.getOrDefault(temp,0)+1);
-                        ans = Math.max(ans,map.get(temp));
+                    
+                    if(x==0){
+                       temp = 100000;
                     }else{
-                        if(arr[i][0]==arr[j][0]){
-                            double temp = 100000;
-                             map.put(temp,map.getOrDefault(temp,0)+1);
-                             ans = Math.max(ans,map.get(temp));
-                        }
+                       temp = (double) y/(double)x;
                     }
+                    
+                        
+                     map.put(temp,map.getOrDefault(temp,0)+1);
+                     ans = Math.max(ans,map.get(temp));
                 }
             }
         }
