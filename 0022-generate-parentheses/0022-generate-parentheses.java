@@ -1,5 +1,5 @@
 class Solution {
-     public static List<String> generateParenthesisAns(String p, int open, int close, ArrayList<String> list){
+     public List<String> generateParenthesisAns(String p, int open, int close, ArrayList<String> list){
         if(open==0 && close==0){
             list.add(p);
             return list;
