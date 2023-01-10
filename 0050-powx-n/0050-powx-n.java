@@ -9,19 +9,9 @@ class Solution {
         return mul(x,n-1,ans);
     }
     
-     public double div(double x, int n, double ans){
-        if(n==0){
-            return ans;
-        }
-         
-        ans /= x;
-        
-        return div(x,n-1,ans);
-    }
-    
     public double myPow(double x, int n) {
-        if(n==0){
-            return 1;
+        if(x==0 || x==1 || n==1){
+            return x;
         }
         
         if(x<0 && n>=Integer.MAX_VALUE){
@@ -48,7 +38,7 @@ class Solution {
         if(n>0){
            return mul(x,n,1);
         }else{
-           return div(x,(int)Math.abs(n),1);
+           return mul(1/x,(int)Math.abs(n),1);
         }
     }
 }
