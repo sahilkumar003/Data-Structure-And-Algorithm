@@ -22,13 +22,7 @@ class Solution {
             return 1;
         }
         
-        if(x>=0 && x<1 && (n>=Integer.MAX_VALUE || n<=Integer.MIN_VALUE)){
-            return 0;
-        } 
-         
-         if(x>=1 && x<2 && (n>=Integer.MAX_VALUE || n<=Integer.MIN_VALUE)){
-             return 1;
-         }
+        
         
         if(n<=Integer.MIN_VALUE || n>=Integer.MAX_VALUE){
             return 0;
