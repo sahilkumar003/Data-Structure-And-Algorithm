@@ -38,7 +38,8 @@ class Solution {
         if(n>0){
            return mul(x,n,1);
         }else{
-           return mul(1/x,(int)Math.abs(n),1);
+           double temp =  mul(x,-1*n,1);
+            return (double)(1.0)/(double)temp;
         }
     }
 }
