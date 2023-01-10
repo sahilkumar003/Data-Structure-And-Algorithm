@@ -20,9 +20,7 @@ class Solution {
         
         if(x<0 && n<=Integer.MIN_VALUE){
             return 1;
-        }
-        
-        
+        }        
         
         if(n<=Integer.MIN_VALUE || n>=Integer.MAX_VALUE){
             return 0;
