@@ -1,27 +1,33 @@
 class Solution {
-    public void permutationAns(int []nums, boolean []arr, List<List<Integer>> ans,  List<Integer> ds){
-        if(ds.size()==nums.length){
-            ans.add(new ArrayList<>(ds));
-            return;
-        }
-        
-        for(int i=0;i<nums.length;++i){
-            if(!arr[i]){
-                arr[i] = true;
-                ds.add(nums[i]);
-                permutationAns(nums,arr,ans,ds);
-                ds.remove(ds.size()-1);
-                arr[i] = false;
+  public List<List<Integer>> solution(int index, int []arr, List<List<Integer>> ans){
+        if(index == arr.length){
+            ArrayList<Integer> ds = new ArrayList<>();
+            for(int i=0;i<arr.length;++i){
+                ds.add(arr[i]);
             }
-        }       
+            ans.add(new ArrayList<>(ds));
+
+            return ans;
+        }
+
+        for(int i=index;i<arr.length;++i){
+            swap(index,i,arr);
+            solution(index+1,arr,ans);
+            swap(index,i,arr);
+        }
+
+        return ans;
     }
+
+    public int[] swap(int i, int j, int []arr){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+
+        return arr;
+    }    
     
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> ans = new ArrayList<>();
-        List<Integer> ds = new ArrayList<>();
-        boolean []arr = new boolean[nums.length];
-        
-        permutationAns(nums,arr,ans,ds);
-        return ans;
+        return solution(0,nums,new ArrayList<>());
     }
 }
