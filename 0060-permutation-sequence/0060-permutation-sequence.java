@@ -1,7 +1,7 @@
 class Solution {
     public String getPermutation(int n, int k) {
         if(n==1){
-            return new String("1");
+            return "1";
         }
         
         ArrayList<Integer> numbers = new ArrayList<>();
@@ -12,7 +12,7 @@ class Solution {
         }
         numbers.add(n);
         k--;
-        StringBuilder ans = new StringBuilder();
+        StringBuffer ans = new StringBuffer();
 
         while(true){
             ans.append(numbers.get(k/fact));
