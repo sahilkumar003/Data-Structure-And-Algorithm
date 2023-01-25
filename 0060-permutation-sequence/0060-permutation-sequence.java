@@ -12,19 +12,19 @@ class Solution {
         }
         numbers.add(n);
         k--;
-        String ans = "";
+        StringBuilder ans = new StringBuilder();
 
         while(true){
-            ans += numbers.get(k/fact);
+            ans.append(numbers.get(k/fact));
             numbers.remove(k/fact);
             if(numbers.size()==1){
-                ans += numbers.get(0);
+                ans.append(numbers.get(0));
                 break;
             }
             k %= fact;
             fact /= numbers.size();
         }
 
-        return ans;
+        return ans.toString();
     }
 }
