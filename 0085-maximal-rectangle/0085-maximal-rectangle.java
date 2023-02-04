@@ -35,14 +35,13 @@ class Solution {
         return ans;
     }
     public int maxAreaHistogram(int []arr){
-        int []ans = new int[arr.length];
         int max = Integer.MIN_VALUE;
         int []countLeft = nearestSmallLeft(arr);
         int []countRight = nearestSmallRight(arr);
 
-        for(int i=0;i<ans.length;i++){
-            ans[i] = (countRight[i]+countLeft[i]-1)*arr[i];
-            max = Math.max(max,ans[i]);
+        for(int i=0;i<arr.length;i++){
+            int area = (countRight[i]+countLeft[i]-1)*arr[i];
+            max = Math.max(max,area);
         }
         return max;
     }
