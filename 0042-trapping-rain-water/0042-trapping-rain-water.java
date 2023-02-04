@@ -1,41 +1,57 @@
 class Solution {
-      public int[] left_max(int []arr){
-        int []temp = new int[arr.length];
-        int max = arr[0];
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]>max){
-                max = arr[i];
-                temp[i] = max;
+    public int[] leftMax(int []arr){
+        Stack<Integer> stack = new Stack<>();
+        int []ans = new int[arr.length];
+        
+        for(int i=0;i<arr.length;++i){
+            while(!stack.isEmpty() && arr[i]>=arr[stack.peek()]){
+                stack.pop();
+            }
+            
+            if(stack.isEmpty()){
+                ans[i] = 0;
+                stack.push(i);
             }else{
-                temp[i] = max;
+                ans[i] = arr[stack.peek()];
             }
         }
-        return temp;
+        
+        return ans;
     }
-
-    public int[] right_max(int []arr){
-        int []temp = new int[arr.length];
-        int max = arr[arr.length-1];
-        for(int i=arr.length-1;i>=0;i--){
-            if(arr[i]>max){
-                max = arr[i];
-                temp[i] = max;
-            }else{
-                temp[i] = max;
-            }
-        }
-        return temp;
-    }
-
     
-    public int trap(int[] arr) {
-          int []leftMax = left_max(arr);
-        int []rightMax = right_max(arr);
-        int sum = 0;
-
-        for(int i=0;i<arr.length;i++){
-            sum += (Math.min(leftMax[i],rightMax[i]) - arr[i]);
+    public int[] rightMax(int []arr){
+        Stack<Integer> stack = new Stack<>();
+        int []ans = new int[arr.length];
+        
+        for(int i=arr.length-1;i>=0;--i){
+            while(!stack.isEmpty() && arr[i]>=arr[stack.peek()]){
+                stack.pop();
+            }
+            
+            if(stack.isEmpty()){
+                ans[i] = 0;
+                stack.push(i);
+            }else{
+                ans[i] = arr[stack.peek()];
+            }
         }
-         return sum;
+        
+        return ans;
+    }
+        
+    public int trap(int[] height) {
+       int []leftMax = leftMax(height);
+       int []rightMax = rightMax(height);
+       int ans = 0;
+        
+       for(int i=1;i<height.length-1;++i){
+           int temp = Math.min(leftMax[i],rightMax[i]);
+           int water = temp - height[i];
+           
+           if(water>0){
+               ans += water;
+           }
+       } 
+        return ans;
     }
 }
