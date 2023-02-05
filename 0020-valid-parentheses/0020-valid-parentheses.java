@@ -19,6 +19,8 @@ class Solution {
                     if(!stack.isEmpty() && stack.pop()!='['){
                         return false;
                     }
+                }else{
+                    break;
                 }
             }
         }
