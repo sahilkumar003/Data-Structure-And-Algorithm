@@ -13,7 +13,6 @@ class Solution {
             map.put(arr[i],map.getOrDefault(arr[i],0)+1);
             sum++;
             
-            if(map.size()>2){
                 while(map.size()>2){
                     if(map.get(arr[j])<=1){
                         map.remove(arr[j]);
@@ -23,9 +22,7 @@ class Solution {
                     j++;
                     sum--;
                 }
-            }else{
-                max = Math.max(max,sum);
-            } 
+                max = Math.max(max,sum); 
         }
         
         return max;
