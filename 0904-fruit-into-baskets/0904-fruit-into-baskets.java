@@ -13,17 +13,19 @@ class Solution {
             map.put(arr[i],map.getOrDefault(arr[i],0)+1);
             sum++;
             
-                while(map.size()>2){
-                    if(map.get(arr[j])<=1){
-                        map.remove(arr[j]);
-                    }else{
-                        map.put(arr[j],map.get(arr[j])-1);
-                    }
-                    j++;
-                    sum--;
-                }
-                max = Math.max(max,sum); 
-        }
+         while(map.size()>2){
+                
+            if(map.get(arr[j])==1){
+               map.remove(arr[j]);
+            }else{
+             map.put(arr[j],map.get(arr[j])-1);
+            }
+                
+              j++;
+              sum--;
+          } 
+             max = Math.max(max,sum); 
+       }
         
         return max;
     }
