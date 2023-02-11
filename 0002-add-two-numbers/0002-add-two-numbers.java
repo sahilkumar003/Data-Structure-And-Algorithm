@@ -9,29 +9,12 @@
  * }
  */
 class Solution {
-    public ListNode reverseLinkedList(ListNode head){
-        ListNode curr = head;
-        ListNode prev = null;
-        
-        while(curr!=null){
-            ListNode temp = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = temp;
-        }
-        
-        return prev;
-    }
-    
     public ListNode addTwoNumbers(ListNode first, ListNode second) {
-        ListNode newFirst = first;
-        ListNode newSecond = second;
-        
         ListNode dummy = new ListNode(-1);
         ListNode temp = dummy;
         
-        ListNode currNF = newFirst;
-        ListNode currNS = newSecond;
+        ListNode currNF = first;
+        ListNode currNS = second;
         int carry = 0;
         
         while(currNF!=null && currNS!=null){
