@@ -1,9 +1,10 @@
 class Solution {
     public int minSwaps(int[] nums) {
-        int []arr = new int[2*nums.length];
+        int n = nums.length;
+        int []arr = new int[2*n];
         int one = 0;
         
-        for(int i=0;i<arr.length;++i){
+        for(int i=0;i<2*n;++i){
             arr[i] = nums[i%nums.length];
             if(i<nums.length && arr[i]==1){
                 one++;
@@ -19,7 +20,7 @@ class Solution {
         
         int j = 0;
         
-        for(int i=0;i<arr.length;++i){  
+        for(int i=0;i<2*n;++i){  
             if(i>=one){
                 min = Math.min(min,zero);
                 if(arr[j++]==0){
