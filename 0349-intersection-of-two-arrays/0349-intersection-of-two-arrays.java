@@ -9,7 +9,7 @@ class Solution {
         }
         
         for(int i=0;i<arr2.length;++i){
-            map2.put(arr2[i],map1.getOrDefault(arr2[i],0)+1);
+            map2.put(arr2[i],map2.getOrDefault(arr2[i],0)+1);
         }
         
         if(arr1.length > arr2.length){
