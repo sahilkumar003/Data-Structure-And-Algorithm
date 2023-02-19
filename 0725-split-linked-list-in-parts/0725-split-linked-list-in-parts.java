@@ -48,7 +48,7 @@ class Solution {
             }
 
             if(prev!=null){
-                head = curr;
+                //head = curr;
                 prev.next = null;
             }
         }
