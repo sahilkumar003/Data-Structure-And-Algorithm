@@ -10,10 +10,8 @@
  */
 class Solution {
     public ListNode mergeNodes(ListNode head) {
-        ListNode dummy = new ListNode(-1,head);
         ListNode prev = head;
         ListNode curr = head.next;
-        boolean flag = true;
         int sum = 0;
         
         while(curr!=null){
