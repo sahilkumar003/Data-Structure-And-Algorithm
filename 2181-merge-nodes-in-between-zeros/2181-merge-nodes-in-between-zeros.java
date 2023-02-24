@@ -10,38 +10,56 @@
  */
 class Solution {
     public ListNode mergeNodes(ListNode head) {
-        ListNode prev = head;
-        ListNode curr = head.next;
-        int sum = 0;
+//         ListNode prev = head;
+//         ListNode curr = head.next;
+//         int sum = 0;
         
-        while(curr!=null){
-            sum += curr.val;
-            if(curr.val==0){
-                ListNode temp = new ListNode(sum);
-                sum = 0;
-                prev.next = temp;
-                temp.next = curr;
-                prev = curr;
-            }
-            curr = curr.next;
-        }
+//         while(curr!=null){
+//             sum += curr.val;
+//             if(curr.val==0){
+//                 ListNode temp = new ListNode(sum);
+//                 sum = 0;
+//                 prev.next = temp;
+//                 temp.next = curr;
+//                 prev = curr;
+//             }
+//             curr = curr.next;
+//         }
         
-        while(head.val==0){
+//         while(head.val==0){
+//             head = head.next;
+//         }
+        
+//         curr = head;
+//         prev = head;
+        
+//         while(curr!=null){
+//             if(curr.val==0){
+//                 prev.next = curr.next;
+//             }else{
+//                 prev = curr;
+//             }
+//             curr = curr.next;
+//         }
+        
+//         return head;
+        
+        ListNode dummy = new ListNode();
+        ListNode prev = dummy;
+        
+        while(head!=null && head.next!=null){
+            prev.next = head;
             head = head.next;
-        }
-        
-        curr = head;
-        prev = head;
-        
-        while(curr!=null){
-            if(curr.val==0){
-                prev.next = curr.next;
-            }else{
-                prev = curr;
+            
+            while(head!=null && head.val!=0){
+                prev.next.val += head.val;
+                head = head.next;
             }
-            curr = curr.next;
+            prev = prev.next;
         }
         
-        return head;
+        prev.next = null;
+        
+        return dummy.next;
     }
 }
