@@ -6,10 +6,14 @@ class Solution {
         int rem = 0;
         
         for(int i=0;i<arr.length;++i){
-             sum += arr[i];
-             rem = sum%k;
+            sum += arr[i];
+            rem = sum%k;
+            if(rem<0){
+                rem += k;
+            }
             if(map.containsKey(rem)){
-                if((i-map.get(rem))>=2){
+                int length = i-map.get(rem);
+                if(length>=2){
                     return true;
                 }
             }else{
