@@ -32,10 +32,6 @@ class Solution {
           map.put(tempSum,i);
       }
 
-      if(max==Integer.MIN_VALUE && sum!=x){
-          return -1;
-      }else{
-          return arr.length-max;
-      }
+      return arr.length-max;
     }
 }
