@@ -1,54 +1,52 @@
 class Solution {
-     public boolean checkAns(HashMap<Character,Integer> ans,HashMap<Character,Integer> req){
-        for(char c : req.keySet()){
-            if(!ans.containsKey(c) || ans.get(c)<req.get(c)){
-                return false;
-            }
-        }
-        return true;
-    }
+    // public boolean check( HashMap<Character,Integer> map, HashMap<Character,Integer> require){
+    //     for(char c : map.keySet()){
+    //         if(require.containsKey(c)){
+    //             if(map.get(c)!=require.get(c)){
+    //                 return false;
+    //             }
+    //         }else{
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
     
-    public List<Integer> findAnagrams(String s, String p) { 
-        ArrayList<Integer> list = new ArrayList<>();
-        HashMap<Character,Integer> req = new HashMap<>();
-        HashMap<Character,Integer> ans = new HashMap<>();
+    public List<Integer> findAnagrams(String s, String p) {
+        HashMap<Character,Integer> map = new HashMap<>();
+        HashMap<Character,Integer> require = new HashMap<>();
+        List<Integer> list = new ArrayList<>();
         
-        if(s.length()<p.length()){
-            return list;
+        for(int i=0;i<p.length();++i){
+            char c = p.charAt(i);
+            require.put(c,require.getOrDefault(c,0)+1);
         }
-
-
-        for(int index=0;index<p.length();++index){
-            char c = p.charAt(index);
-            char c1 = s.charAt(index);
-            req.put(c,req.getOrDefault(c,0)+1);
-            ans.put(c1,ans.getOrDefault(c1,0)+1);
-        }
-
-        if(checkAns(ans,req)){
-            list.add(0);
-        }
-
-
-        int i=0;
-        int j=p.length();
-
-        while(i<s.length() && j<s.length()){
-            if(ans.get(s.charAt(i))==1){
-                ans.remove(s.charAt(i));
-            }else{
-                ans.put(s.charAt(i),ans.get(s.charAt(i))-1);
+        
+        int j = -1;
+        
+        for(int i=0;i<s.length();++i){
+            char c = s.charAt(i);
+            
+            if(i>=p.length()){
+                if(map.equals(require)){
+                    list.add(i-p.length());
+                }
+                
+                char ch = s.charAt(++j);
+                if(map.get(ch)<=1){
+                    map.remove(ch);
+                }else{
+                    map.put(ch,map.get(ch)-1);
+                }
             }
-
-            ans.put(s.charAt(j),ans.getOrDefault(s.charAt(j),0)+1);
-
-            if(checkAns(ans,req)){
-                list.add(i+1);
-            }
-
-            i++;
-            j++;
+            
+            map.put(c,map.getOrDefault(c,0)+1);
         }
+        
+        if(map.equals(require)){
+            list.add(s.length()-p.length());
+        }
+        
         return list;
     }
 }
