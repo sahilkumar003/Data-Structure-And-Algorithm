@@ -1,14 +1,14 @@
 class Solution {
-    public int titleToNumber(String s) {
-        int ans = 0;
-        int k = 0;
+    public int titleToNumber(String str) {
+        long product = ((str.charAt(0) - 'A') + 1);
+        long sum = 0;
         
-        for(int i=s.length()-1;i>=0;--i){
-            int temp = (int)(s.charAt(i) - 'A') + 1; 
-            ans += temp * Math.pow(26,k);
-            k++;
+        for(int i=1;i<str.length();++i){
+            product *= 26;
+            sum = ((str.charAt(i) - 'A') + 1);
+            product += sum;
         }
         
-        return ans;
+        return (int)(product);
     }
 }
