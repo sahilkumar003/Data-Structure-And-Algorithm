@@ -6,19 +6,17 @@ class Solution {
         
         while(start<=end){
             long mid = start + (end-start)/2;
-            long temp = mid*mid;
-            if(temp == x){
-                return (int)mid;
-            }
             
-            if(temp>x){
-                end = mid-1;
-            }else{
-                ans = mid;
+            if((mid*mid)==x){
+                return (int)mid;
+            }else if((mid*mid)<x){
+                ans = start;
                 start = mid+1;
+            }else{
+                end = mid-1;
             }
         }
         
-        return (int)ans;
+        return (int)end;
     }
 }
