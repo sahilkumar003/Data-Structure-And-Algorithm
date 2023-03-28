@@ -1,33 +1,30 @@
 class Solution {
-     public int checkSpeed(int []arr,int h){
-        int count = 0;
-        for (int j : arr) {
-            count += (int) Math.ceil(j * 1.0 / h);
+    public boolean check(int []arr, int mid, int h){
+        int time = 0;
+        
+        for(int i=0;i<arr.length;++i){
+            time += Math.ceil(arr[i] * 1.0/mid);
         }
-        return count;
+        
+        return time<=h;
     }
     
-    public int minEatingSpeed(int[] arr, int h) {
-         
-        int start = 0;
-        int end = Integer.MIN_VALUE;
+    public int minEatingSpeed(int[] piles, int h) {
+        int start = 1;
+        int end = 1000000000;
         int ans = 0;
-        for (int j : arr) {
-            end = Math.max(end, j);
-        }
-
+        
         while(start<=end){
             int mid = start + (end-start)/2;
-            if(mid==0){
-                return ans;
-            }
-            if(checkSpeed(arr,mid)>h){
-                start = mid+1;
-            }else{
+            
+            if(check(piles,mid,h)){
                 ans = mid;
                 end = mid-1;
+            }else{
+                start = mid+1;
             }
         }
+        
         return ans;
     }
 }
