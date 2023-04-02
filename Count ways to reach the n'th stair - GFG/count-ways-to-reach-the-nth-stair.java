@@ -50,7 +50,7 @@ class Solution
         int oneSteps = totalWays(currStair+1,target,memo);
         int twoSteps = totalWays(currStair+2,target,memo);
         
-        memo.put(currStairKey,(oneSteps+twoSteps)%(1000000000 + 7)); //storing result
+        memo.put(currStairKey,(oneSteps+twoSteps)%(1000000007)); //storing result
         
         return memo.get(currStairKey);
     }
