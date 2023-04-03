@@ -19,7 +19,6 @@ class Solution {
     }
     
     public int fib(int n) {
-        Map<Integer,Integer> cache = new HashMap<Integer,Integer>();
-       return ans(n,cache);
+       return ans(n,new HashMap<Integer,Integer>());
     }
 }
