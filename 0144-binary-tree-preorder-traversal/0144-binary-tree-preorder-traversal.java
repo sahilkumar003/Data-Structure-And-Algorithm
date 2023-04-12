@@ -15,15 +15,18 @@
  */
 class Solution {
    public List<Integer> preorderTraversal(TreeNode root) {
-		List<Integer> pre = new LinkedList<Integer>();
-		preHelper(root,pre);
-		return pre;
+		return traversal(root,new ArrayList<Integer>());
 	}
     
-	public void preHelper(TreeNode root, List<Integer> pre) {
-		if(root==null) return;
-		pre.add(root.val);
-		preHelper(root.left,pre);
-		preHelper(root.right,pre);
-	}
+	public List<Integer> traversal(TreeNode root,List<Integer> list){
+        if(root==null){
+            return list;
+        }
+        
+        list.add(root.val);
+        traversal(root.left,list);
+        traversal(root.right,list);
+      
+        return list;
+    }
 }
