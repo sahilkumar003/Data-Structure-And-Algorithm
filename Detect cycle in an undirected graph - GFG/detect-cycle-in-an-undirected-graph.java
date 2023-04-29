@@ -33,37 +33,17 @@ class GFG {
 
 
 class Solution {
-    class Pair{
-        int node;
-        int parent;
-        public Pair(int node,int parent){
-            this.node = node;
-            this.parent = parent;
-        }
-    }
-    
-    public boolean detect(int curr, int v, ArrayList<ArrayList<Integer>> adj, boolean []visited){
-        visited[curr] = true;
-        Queue<Pair> q = new LinkedList<>();
-        q.add(new Pair(curr,-1));
-        
-        while(!q.isEmpty()){
-            int node = q.peek().node;
-            int parent = q.peek().parent;
-            
-            q.remove();
-            
-            for(Integer nodes : adj.get(node)){
-                if(!visited[nodes]){
-                    q.add(new Pair(nodes,node));
-                    visited[nodes] = true;
-                }else if(parent != nodes){
-                    return true;
-                }
-            }
-        }
-        
-        return false;
+    public boolean detect(int curr, int parent, ArrayList<ArrayList<Integer>> adj, boolean []visited){
+       visited[curr] = true;
+       
+       for(Integer nodes : adj.get(curr)){
+           if(!visited[nodes]){
+               if(detect(nodes,curr,adj,visited)) return true;;
+           }else if(visited[nodes] && nodes!=parent){
+               return true;
+           }
+       }
+      return false;
     }
     
     
@@ -72,7 +52,7 @@ class Solution {
         
         for(int i=0;i<v;++i){
             if(!visited[i]){
-                if(detect(i,v,adj,visited)){
+                if(detect(i,-1,adj,visited)){
                     return true;
                 }
             }
