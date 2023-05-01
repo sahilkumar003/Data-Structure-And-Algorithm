@@ -60,38 +60,34 @@ class Main {
 
 class Solution
 {
-    static int[] topoSort(int v, ArrayList<ArrayList<Integer>> adj) 
-    {
-        int [] inDegree = new int[v];
+    static void dfs(int curr, ArrayList<ArrayList<Integer>> adj, boolean[]isVisited, Stack<Integer> stack){
+        isVisited[curr] = true;
         
-        for(int i=0;i<v;++i){
-            for(Integer nodes : adj.get(i)){
-                inDegree[nodes]++;
+        for(Integer nodes : adj.get(curr)){
+            if(!isVisited[nodes]){
+                dfs(nodes,adj,isVisited,stack);
             }
         }
         
-        Queue<Integer> q = new LinkedList<>();
+        stack.push(curr);
+    }
+    
+    static int[] topoSort(int v, ArrayList<ArrayList<Integer>> adj) 
+    {
+        boolean[] isVisited = new boolean[v];
+        Stack<Integer> stack = new Stack<>();
         
         for(int i=0;i<v;++i){
-            if(inDegree[i]==0){
-                q.add(i);
+            if(!isVisited[i]){
+                dfs(i,adj,isVisited,stack);
             }
         }
         
         int []topo = new int[v];
         int i = 0;
         
-        while(!q.isEmpty()){
-            int node = q.peek();
-            q.remove();
-            topo[i++] = node;
-            
-            for(Integer nodes : adj.get(node)){
-                inDegree[nodes]--;
-                if(inDegree[nodes]==0){
-                    q.add(nodes);
-                }
-            }
+        while(!stack.isEmpty()){
+            topo[i++] = stack.pop();
         }
         
         return topo;
