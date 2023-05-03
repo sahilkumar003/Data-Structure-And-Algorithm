@@ -115,27 +115,50 @@ class GfG {
 
 public class Solution
 {
-    ArrayList<Integer> check(Node root, ArrayList<Integer> list){
-        if(root==null){
-            return list;
-        }
+    // ArrayList<Integer> check(Node root, ArrayList<Integer> list){
+    //     if(root==null){
+    //         return list;
+    //     }
         
-        check(root.left,list);
-        list.add(root.data);
-        check(root.right,list);
+    //     check(root.left,list);
+    //     list.add(root.data);
+    //     check(root.right,list);
         
-        return list;
+    //     return list;
+    // }
+    
+     boolean isBSTUtil(Node node, int min, int max)
+    {
+        /* an empty tree is BST */
+        if (node == null)
+            return true;
+ 
+        /* false if this node violates the min/max
+         * constraints */
+        if (node.data < min || node.data > max)
+            return false;
+ 
+        /* otherwise check the subtrees recursively
+        tightening the min/max constraints */
+        // Allow only distinct values
+        
+        boolean b1 = isBSTUtil(node.left, min, node.data - 1);
+        boolean b2 =  isBSTUtil(node.right, node.data + 1, max);
+        
+        return b1 && b2;
     }
     
     boolean isBST(Node root)
     {
-        ArrayList<Integer> list = check(root,new ArrayList<>());
+        // ArrayList<Integer> list = check(root,new ArrayList<>());
         
-        for(int i=1;i<list.size();++i){
-            if(list.get(i)<=list.get(i-1)){
-                return false;
-            }
-        }
-        return true;
+        // for(int i=1;i<list.size();++i){
+        //     if(list.get(i)<=list.get(i-1)){
+        //         return false;
+        //     }
+        // }
+        // return true;
+        
+        return isBSTUtil(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
     }
 }
