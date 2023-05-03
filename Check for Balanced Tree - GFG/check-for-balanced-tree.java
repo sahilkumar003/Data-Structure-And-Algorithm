@@ -131,17 +131,15 @@ class Tree
 {
      boolean isBalanced(Node node)
     {
-        int lh; /* for height of left subtree */
- 
-        int rh; /* for height of right subtree */
+       
  
         /* If tree is empty then return true */
         if (node == null)
             return true;
  
         /* Get the height of left and right sub trees */
-        lh = height(node.left);
-        rh = height(node.right);
+        int lh = height(node.left);
+        int rh = height(node.right);
  
         boolean b1 =  isBalanced(node.left);
         boolean b2 =  isBalanced(node.right);
