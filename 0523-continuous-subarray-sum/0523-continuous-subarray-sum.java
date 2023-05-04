@@ -8,9 +8,9 @@ class Solution {
         for(int i=0;i<arr.length;++i){
             sum += arr[i];
             rem = sum%k;
-            // if(rem<0){
-            //     rem += k;
-            // }
+            if(rem<0){
+                rem += k;
+            }
             if(map.containsKey(rem)){
                 int length = i-map.get(rem);
                 if(length>=2){
