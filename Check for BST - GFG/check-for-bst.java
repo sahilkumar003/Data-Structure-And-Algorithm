@@ -127,26 +127,27 @@ public class Solution
     //     return list;
     // }
     
-     boolean isBSTUtil(Node node, int min, int max)
-    {
-        /* an empty tree is BST */
-        if (node == null)
-            return true;
+    //  boolean isBSTUtil(Node node, int min, int max)
+    // {
+    //     /* an empty tree is BST */
+    //     if (node == null)
+    //         return true;
  
-        /* false if this node violates the min/max
-         * constraints */
-        if (node.data < min || node.data > max)
-            return false;
+    //     /* false if this node violates the min/max
+    //      * constraints */
+    //     if (node.data < min || node.data > max)
+    //         return false;
  
-        /* otherwise check the subtrees recursively
-        tightening the min/max constraints */
-        // Allow only distinct values
+    //     /* otherwise check the subtrees recursively
+    //     tightening the min/max constraints */
+    //     // Allow only distinct values
         
-        boolean b1 = isBSTUtil(node.left, min, node.data - 1);
-        boolean b2 =  isBSTUtil(node.right, node.data + 1, max);
+    //     boolean b1 = isBSTUtil(node.left, min, node.data - 1);
+    //     boolean b2 =  isBSTUtil(node.right, node.data + 1, max);
         
-        return b1 && b2;
-    }
+    //     return b1 && b2;
+    // }
+    Node prev = null;
     
     boolean isBST(Node root)
     {
@@ -159,6 +160,21 @@ public class Solution
         // }
         // return true;
         
-        return isBSTUtil(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+        // return isBSTUtil(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+        
+        if(root==null){
+            return true;
+        }
+
+            if (!isBST(root.left))
+                return false;
+ 
+            // Allows only distinct valued nodes
+            if (prev != null && root.data <= prev.data)
+                return false;
+ 
+            prev = root;
+ 
+            return isBST(root.right);
     }
 }
