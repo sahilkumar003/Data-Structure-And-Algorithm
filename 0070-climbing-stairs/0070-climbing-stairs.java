@@ -7,16 +7,16 @@ class Solution {
             return 0;
         }
         
-        int currStairKey = currStair;
+        int currStairKey = currStair;   //extra local variable for non changing parameter
         
-        if(memo.containsKey(currStairKey)){
+        if(memo.containsKey(currStairKey)){  //if we already calculated then just return result
             return memo.get(currStairKey);
         }
         
         int oneSteps = totalWays(currStair+1,target,memo);
         int twoSteps = totalWays(currStair+2,target,memo);
         
-        memo.put(currStairKey,oneSteps+twoSteps);
+        memo.put(currStairKey,oneSteps+twoSteps); //storing result
         
         return oneSteps+twoSteps;
     }
