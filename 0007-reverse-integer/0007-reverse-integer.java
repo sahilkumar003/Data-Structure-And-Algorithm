@@ -1,6 +1,6 @@
 class Solution {
     public int reverse(int x) {
-        if ((x < Math.pow(-2,31)) || (x > (Math.pow(2,31)) - 1)){
+        if (x < Integer.MIN_VALUE  || (x > Integer.MAX_VALUE - 1)){
             return 0;
         }
         
@@ -21,7 +21,7 @@ class Solution {
         
         
         ans =  flag ? -(ans) : ans;
-         if ((ans < Math.pow(-2,31)) || (ans > (Math.pow(2,31)) - 1)){
+         if (ans < Integer.MIN_VALUE  || (ans > Integer.MAX_VALUE - 1)){
             return 0;
         }
         
