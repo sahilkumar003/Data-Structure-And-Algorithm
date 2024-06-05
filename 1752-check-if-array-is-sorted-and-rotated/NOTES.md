@@ -1,1 +1,1 @@
-rotated array is nothing but just circular array, and in circular array only 1 time decrease slop is possible if array was previously sorted
+​
