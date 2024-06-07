@@ -9,13 +9,15 @@ class Solution:
         if (current_stair > target_stair):
             return 0;
         
-        if current_stair in memo:
-            return memo.get(current_stair)
+        current_key = current_stair;
+        
+        if current_key in memo:
+            return memo.get(current_key)
         
         one_jump = self.total_ways(current_stair + 1, target_stair, memo);
         two_jumps = self.total_ways(current_stair + 2, target_stair, memo);
         
-        memo[current_stair] = one_jump + two_jumps;
+        memo[current_key] = one_jump + two_jumps;
         
         return one_jump + two_jumps;
         
