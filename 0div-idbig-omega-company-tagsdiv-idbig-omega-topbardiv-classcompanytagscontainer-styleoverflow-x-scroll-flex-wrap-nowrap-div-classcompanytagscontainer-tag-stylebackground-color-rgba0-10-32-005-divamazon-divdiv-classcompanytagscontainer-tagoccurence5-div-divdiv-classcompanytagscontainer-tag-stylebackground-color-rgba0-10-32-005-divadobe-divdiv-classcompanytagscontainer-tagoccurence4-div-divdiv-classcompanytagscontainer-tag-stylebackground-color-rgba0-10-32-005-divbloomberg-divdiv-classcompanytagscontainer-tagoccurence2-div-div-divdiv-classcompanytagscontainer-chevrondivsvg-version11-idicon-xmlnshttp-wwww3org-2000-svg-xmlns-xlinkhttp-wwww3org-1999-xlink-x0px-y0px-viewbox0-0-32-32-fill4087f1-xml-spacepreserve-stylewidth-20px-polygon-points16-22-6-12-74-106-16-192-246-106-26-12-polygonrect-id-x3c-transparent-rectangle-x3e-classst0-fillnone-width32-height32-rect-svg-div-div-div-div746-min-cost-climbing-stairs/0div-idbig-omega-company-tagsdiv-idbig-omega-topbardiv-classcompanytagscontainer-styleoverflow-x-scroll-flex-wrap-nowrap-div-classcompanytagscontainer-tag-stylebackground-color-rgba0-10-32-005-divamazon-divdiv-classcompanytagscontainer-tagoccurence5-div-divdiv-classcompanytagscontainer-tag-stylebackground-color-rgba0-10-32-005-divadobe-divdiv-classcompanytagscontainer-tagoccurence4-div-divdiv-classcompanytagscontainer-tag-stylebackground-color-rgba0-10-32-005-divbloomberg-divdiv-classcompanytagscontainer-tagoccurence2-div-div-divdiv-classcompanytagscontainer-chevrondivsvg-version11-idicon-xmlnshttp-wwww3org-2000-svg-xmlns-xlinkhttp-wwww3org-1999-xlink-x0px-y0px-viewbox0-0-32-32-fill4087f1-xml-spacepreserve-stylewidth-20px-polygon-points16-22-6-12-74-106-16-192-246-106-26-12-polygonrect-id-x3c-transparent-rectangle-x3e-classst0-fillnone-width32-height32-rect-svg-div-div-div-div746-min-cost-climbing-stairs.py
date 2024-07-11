@@ -19,8 +19,6 @@ class Solution:
         return min(oneStep, twoSteps);
     
     def minCostClimbingStairs(self, cost: List[int]) -> int:
-        startingPointZero = self.calculateClimbingStairsCost(cost, 0, len(cost), {});
-        startingPointOne = self.calculateClimbingStairsCost(cost, 1, len(cost), {});
-        
-        return min(startingPointZero, startingPointOne);
+        memo = {}
+        return min(self.calculateClimbingStairsCost(cost, 0, len(cost), memo), memo[1]);
         
