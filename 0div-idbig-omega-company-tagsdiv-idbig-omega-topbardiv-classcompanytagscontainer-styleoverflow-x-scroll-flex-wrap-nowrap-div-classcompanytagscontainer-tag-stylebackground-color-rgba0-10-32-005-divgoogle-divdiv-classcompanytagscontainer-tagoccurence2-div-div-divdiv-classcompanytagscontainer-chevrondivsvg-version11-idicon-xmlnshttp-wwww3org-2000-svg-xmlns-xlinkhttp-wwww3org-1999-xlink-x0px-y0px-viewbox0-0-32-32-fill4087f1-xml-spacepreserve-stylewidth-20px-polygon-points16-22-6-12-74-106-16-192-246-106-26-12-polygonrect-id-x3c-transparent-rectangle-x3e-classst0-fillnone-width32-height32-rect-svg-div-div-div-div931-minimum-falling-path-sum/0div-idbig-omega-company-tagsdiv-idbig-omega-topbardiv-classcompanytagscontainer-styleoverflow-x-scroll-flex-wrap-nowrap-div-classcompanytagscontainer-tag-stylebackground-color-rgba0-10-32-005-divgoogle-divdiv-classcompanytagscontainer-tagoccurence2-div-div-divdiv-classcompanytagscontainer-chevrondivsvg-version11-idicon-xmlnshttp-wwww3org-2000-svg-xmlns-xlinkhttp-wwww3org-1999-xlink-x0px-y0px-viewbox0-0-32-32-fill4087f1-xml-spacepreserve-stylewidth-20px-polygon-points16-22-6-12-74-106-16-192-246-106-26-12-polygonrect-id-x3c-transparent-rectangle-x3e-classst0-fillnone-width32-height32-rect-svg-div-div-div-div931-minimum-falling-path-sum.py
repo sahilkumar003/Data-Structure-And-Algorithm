@@ -18,7 +18,7 @@ class Solution:
         
         memo[currentKey] = min(min(leftDiagonal, down), rightDiagonal);
             
-        return min(min(leftDiagonal, down), rightDiagonal);
+        return min(leftDiagonal, down, rightDiagonal);
             
     
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
