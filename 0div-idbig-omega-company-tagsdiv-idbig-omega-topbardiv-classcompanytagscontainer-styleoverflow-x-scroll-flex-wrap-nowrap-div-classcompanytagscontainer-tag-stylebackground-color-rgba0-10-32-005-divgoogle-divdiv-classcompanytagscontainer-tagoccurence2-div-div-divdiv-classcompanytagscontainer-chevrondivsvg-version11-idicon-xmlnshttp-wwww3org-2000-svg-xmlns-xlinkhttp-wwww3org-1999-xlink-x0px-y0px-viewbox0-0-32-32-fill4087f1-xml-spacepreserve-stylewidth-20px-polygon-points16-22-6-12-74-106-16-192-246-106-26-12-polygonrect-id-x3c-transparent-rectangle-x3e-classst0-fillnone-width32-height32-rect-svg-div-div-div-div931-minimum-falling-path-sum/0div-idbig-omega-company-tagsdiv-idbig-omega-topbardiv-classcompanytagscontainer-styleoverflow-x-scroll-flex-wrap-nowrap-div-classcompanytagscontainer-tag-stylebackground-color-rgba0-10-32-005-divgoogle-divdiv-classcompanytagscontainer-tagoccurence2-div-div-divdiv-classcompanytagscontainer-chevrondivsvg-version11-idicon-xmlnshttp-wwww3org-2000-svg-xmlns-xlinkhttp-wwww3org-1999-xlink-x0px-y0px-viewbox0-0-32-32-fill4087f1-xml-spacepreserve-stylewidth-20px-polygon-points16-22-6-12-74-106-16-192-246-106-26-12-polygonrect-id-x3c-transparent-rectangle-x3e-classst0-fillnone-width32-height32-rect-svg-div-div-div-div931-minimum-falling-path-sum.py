@@ -1,7 +1,7 @@
 class Solution:
     def findPath(self, currentRow, currentCol, matrix, memo):
         if (currentRow > len(matrix)-1 or currentCol < 0 or currentCol > len(matrix[0])-1):
-            return 10000;
+            return  float('inf');
         
         if (currentRow == len(matrix)-1):
             return matrix[currentRow][currentCol];
@@ -22,7 +22,7 @@ class Solution:
             
     
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
-        minPath = 10000;
+        minPath =  float('inf');
         memo = {}
         for i in range(len(matrix)):
             temp = self.findPath(0, i, matrix, memo);
