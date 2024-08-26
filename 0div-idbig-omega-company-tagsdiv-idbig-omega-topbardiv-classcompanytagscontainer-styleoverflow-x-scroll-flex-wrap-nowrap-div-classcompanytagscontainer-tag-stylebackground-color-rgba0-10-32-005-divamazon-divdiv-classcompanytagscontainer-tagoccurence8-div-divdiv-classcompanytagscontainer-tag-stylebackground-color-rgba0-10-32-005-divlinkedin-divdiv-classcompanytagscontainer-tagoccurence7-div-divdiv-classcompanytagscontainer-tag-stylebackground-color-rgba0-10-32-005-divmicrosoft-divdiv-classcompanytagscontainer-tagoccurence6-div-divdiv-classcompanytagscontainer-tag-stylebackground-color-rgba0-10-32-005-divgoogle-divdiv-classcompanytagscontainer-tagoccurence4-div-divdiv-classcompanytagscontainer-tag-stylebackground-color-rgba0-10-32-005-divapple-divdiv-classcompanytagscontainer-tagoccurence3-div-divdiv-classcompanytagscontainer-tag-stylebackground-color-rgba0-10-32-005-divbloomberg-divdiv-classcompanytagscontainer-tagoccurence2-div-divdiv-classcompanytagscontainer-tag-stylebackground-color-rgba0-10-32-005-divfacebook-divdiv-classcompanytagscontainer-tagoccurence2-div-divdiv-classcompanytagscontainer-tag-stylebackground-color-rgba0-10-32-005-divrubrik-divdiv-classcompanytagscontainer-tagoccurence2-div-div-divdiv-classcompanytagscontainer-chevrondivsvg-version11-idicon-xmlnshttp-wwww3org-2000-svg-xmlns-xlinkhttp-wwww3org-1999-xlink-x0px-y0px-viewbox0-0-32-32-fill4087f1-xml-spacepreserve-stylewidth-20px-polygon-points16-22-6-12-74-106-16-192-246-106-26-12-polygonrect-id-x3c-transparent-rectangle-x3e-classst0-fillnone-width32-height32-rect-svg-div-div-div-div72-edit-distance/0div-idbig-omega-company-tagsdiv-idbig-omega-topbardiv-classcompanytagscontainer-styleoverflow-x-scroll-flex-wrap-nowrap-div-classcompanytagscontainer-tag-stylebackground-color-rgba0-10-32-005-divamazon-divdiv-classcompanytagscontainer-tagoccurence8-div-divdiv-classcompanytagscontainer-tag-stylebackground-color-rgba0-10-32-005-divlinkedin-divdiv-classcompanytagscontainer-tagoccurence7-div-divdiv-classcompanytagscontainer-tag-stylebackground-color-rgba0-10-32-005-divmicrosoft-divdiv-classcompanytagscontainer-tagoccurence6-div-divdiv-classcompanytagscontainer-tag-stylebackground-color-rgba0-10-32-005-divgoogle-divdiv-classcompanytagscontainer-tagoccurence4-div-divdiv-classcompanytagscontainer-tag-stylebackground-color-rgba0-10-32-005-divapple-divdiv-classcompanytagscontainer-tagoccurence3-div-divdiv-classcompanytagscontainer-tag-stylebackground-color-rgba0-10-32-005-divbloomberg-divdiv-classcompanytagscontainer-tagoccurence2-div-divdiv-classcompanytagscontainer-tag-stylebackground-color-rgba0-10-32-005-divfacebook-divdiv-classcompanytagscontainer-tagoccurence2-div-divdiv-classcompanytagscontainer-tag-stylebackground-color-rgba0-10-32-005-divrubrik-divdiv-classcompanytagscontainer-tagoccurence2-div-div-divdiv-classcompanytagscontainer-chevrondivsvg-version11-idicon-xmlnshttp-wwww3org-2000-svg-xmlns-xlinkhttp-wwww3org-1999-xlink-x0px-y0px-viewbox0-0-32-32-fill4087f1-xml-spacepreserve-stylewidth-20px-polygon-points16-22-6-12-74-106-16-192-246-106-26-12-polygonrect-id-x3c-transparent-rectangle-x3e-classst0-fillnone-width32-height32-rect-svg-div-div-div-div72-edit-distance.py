@@ -24,13 +24,4 @@ class Solution:
         return ans;    
     
     def minDistance(self, word1: str, word2: str) -> int:
-        if len(word1) == 0 and len(word2) == 0:
-            return 0;
-        
-        if len(word2)==0:
-            return len(word1);
-        
-        if len(word1)==0:
-            return len(word2);
-        
         return self.minNumberOfOperations(0, 0, word1, word2, dict());
