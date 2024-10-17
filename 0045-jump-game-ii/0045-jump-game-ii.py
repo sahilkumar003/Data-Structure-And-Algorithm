@@ -22,4 +22,5 @@ class Solution:
     
     def jump(self, nums: List[int]) -> int:
         return self.canReachEnd(nums, 0, len(nums)-1, dict());
+    
         
