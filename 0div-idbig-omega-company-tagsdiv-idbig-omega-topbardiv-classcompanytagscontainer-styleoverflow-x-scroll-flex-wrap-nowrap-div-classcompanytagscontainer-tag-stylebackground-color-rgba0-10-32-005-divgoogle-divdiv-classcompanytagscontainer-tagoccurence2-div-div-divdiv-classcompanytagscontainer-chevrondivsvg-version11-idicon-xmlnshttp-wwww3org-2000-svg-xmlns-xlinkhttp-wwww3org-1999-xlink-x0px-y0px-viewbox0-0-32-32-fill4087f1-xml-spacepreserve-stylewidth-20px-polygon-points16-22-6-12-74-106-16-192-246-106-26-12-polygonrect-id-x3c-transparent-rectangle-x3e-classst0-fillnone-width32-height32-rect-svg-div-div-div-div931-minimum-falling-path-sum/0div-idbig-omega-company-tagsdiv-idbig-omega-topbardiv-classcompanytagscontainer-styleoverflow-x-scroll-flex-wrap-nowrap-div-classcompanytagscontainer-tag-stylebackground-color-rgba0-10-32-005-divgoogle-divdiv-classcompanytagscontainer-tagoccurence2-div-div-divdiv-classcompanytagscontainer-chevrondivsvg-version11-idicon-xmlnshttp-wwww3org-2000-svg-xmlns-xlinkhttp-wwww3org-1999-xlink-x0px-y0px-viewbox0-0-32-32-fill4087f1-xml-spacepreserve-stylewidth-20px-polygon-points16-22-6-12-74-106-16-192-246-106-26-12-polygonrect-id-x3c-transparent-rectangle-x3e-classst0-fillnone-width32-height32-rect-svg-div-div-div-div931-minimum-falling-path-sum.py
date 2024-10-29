@@ -16,7 +16,7 @@ class Solution:
         down = currentValue + self.findPath(currentRow+1, currentCol, matrix, memo);
         rightDiagonal = currentValue + self.findPath(currentRow+1, currentCol+1, matrix, memo);
         
-        memo[currentKey] = min(min(leftDiagonal, down), rightDiagonal);
+        memo[currentKey] = min(leftDiagonal, down, rightDiagonal);
             
         return min(leftDiagonal, down, rightDiagonal);
             
